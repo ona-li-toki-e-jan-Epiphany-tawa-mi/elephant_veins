@@ -17,7 +17,7 @@
 
 -- Debugging module.
 
--- Imports private "global" namespace.
+-- Imports private namespace.
 _elephant_veins = ...
 
 

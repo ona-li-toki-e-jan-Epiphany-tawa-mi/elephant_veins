@@ -17,7 +17,7 @@
 
 
 
--- Private "global" namespace passed to other Lua modules.
+-- Private namespace for internal functions.
 local _elephant_veins = {}
 
 --- Wrapper for minetest.log().
@@ -37,35 +37,7 @@ function _elephant_veins.load_module(path)
    return loadfile(minetest.get_modpath("elephant_veins") .. "/" .. path)(_elephant_veins)
 end
 
-
-
--- Global namespace.
-elephant_veins = {}
-
---- Returns the value of an Elephant Veins setting.
--- All settings are currently numbers, and are assumed to be such.
--- @param setting The name of the setting without the namespace.
--- @param default The default value of the setting.
-function elephant_veins.get_setting(setting, default)
-   local setting_type = type(default)
-   local setting_name = "elephant_veins" .. "." .. setting
-
-   if "number" == setting_type then
-      return tonumber(minetest.settings:get(setting_name)) or default
-   elseif "boolean" == setting_type then
-      local value = minetest.settings:get_bool(setting_name)
-      if nil ~= value then return value else return default end
-   else
-      _elephant_veins.log("error", "elephant_veins.get_setting: unhandled type '"
-                                   .. setting_type .. "' encountered with setting '"
-                                   .. setting_name .. "'")
-   end
-
-   return default
-end
-
-
-
+_elephant_veins.load_module("api.lua")
 _elephant_veins.load_module("debug.lua")
 
 
