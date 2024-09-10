@@ -42,14 +42,80 @@ _elephant_veins.load_module("debug.lua")
 
 
 
+-- Registers ores from default.
+elephant_veins.register_ore({
+      ore      = "default:stone_with_coal",
+      ore_type = "scatter",
+      wherein  = "default:stone"
+})
+elephant_veins.register_ore({
+      ore      = "default:stone_with_copper",
+      ore_type = "scatter",
+      wherein  = "default:stone"
+})
+elephant_veins.register_ore({
+      ore      = "default:stone_with_iron",
+      ore_type = "scatter",
+      wherein  = "default:stone"
+})
+elephant_veins.register_ore({
+      ore      = "default:stone_with_tin",
+      ore_type = "scatter",
+      wherein  = "default:stone"
+})
+elephant_veins.register_ore({
+      ore      = "default:stone_with_gold",
+      ore_type = "scatter",
+      wherein  = "default:stone"
+})
+elephant_veins.register_ore({
+      ore      = "default:stone_with_diamond",
+      ore_type = "scatter",
+      wherein  = "default:stone"
+})
+elephant_veins.register_ore({
+      ore      = "default:stone_with_mese",
+      ore_type = "scatter",
+      wherein  = "default:stone"
+})
+
+
+
 -- Loads in settings.
 local vein_scarcity_multipler  = elephant_veins.get_setting("vein_scarcity_multipler",  150)
 local vein_ore_count_multipler = elephant_veins.get_setting("vein_ore_count_multipler", 150)
 local vein_size_multipler      = elephant_veins.get_setting("vein_size_multipler",      6)
 
+--- Returns whether the wherein values of two ores are equivalent.
+local function compare_ore_whereins(wherein1, wherein2)
+   if type(wherein1) ~= type(wherein2) then return false end
+
+   if "string" == type(wherein1) then
+      return wherein1 == wherein2
+   elseif "table" == type(wherein1) then
+      for _, wherein1_block in pairs(wherein1) do
+         if -1 == table.index_of(wherein2, wherein1_block) then return false end
+      end
+      return true
+   else
+      _elephant_veins.log("error", "compare_ore_whereins: encountered unexpected wherein "
+                                   .. "type '" .. type(wherein1) .. "'")
+   end
+
+   return false
+end
+
 --- Returns whether the ore should be elephantified.
 local function is_elephantifyable(ore)
-   return "default:stone" == ore.wherein and "scatter" == ore.ore_type
+   for _, registered_ore in pairs(elephant_veins.registered_ores) do
+      if ore.ore == registered_ore.ore and ore.ore_type == registered_ore.ore_type
+         and compare_ore_whereins(ore.wherein, registered_ore.wherein)
+      then
+         return true
+      end
+   end
+
+   return false
 end
 
 --- Applies the Elephant Veins transformations to the ore.
@@ -61,6 +127,8 @@ end
 
 --- Modifies the registered ores to generate the "elephant veins."
 local function elephantify_ores()
+   local __func__ = "elephantify_ores"
+
    -- Modifying registered ores requires unregistering them and reregistering
    -- the modified copies.
    local registered_ores = table.copy(minetest.registered_ores)
@@ -68,8 +136,10 @@ local function elephantify_ores()
 
    for _, ore in pairs(registered_ores) do
       if is_elephantifyable(ore) then
-         _elephant_veins.log("info", "elephantifying ore '" .. ore.ore .. "'")
+         _elephant_veins.log("info", __func__ .. ": elephantifying ore '" .. ore.ore .. "'")
          elephantify_ore(ore)
+      else
+         _elephant_veins.log("info", __func__ .. ": skipping ore '" .. ore.ore .. "'")
       end
 
       minetest.register_ore(ore)

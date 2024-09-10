@@ -46,3 +46,62 @@ function elephant_veins.get_setting(setting, default)
 
    return default
 end
+
+
+
+--- A table of the ores registered with Elephant Veins to be elephantized.
+-- The ores registered by minetest.register_ore() will be compared against these
+--   ores. If they have the same name, type, and occur in the same blocks as one
+--   of the ores in this table, they will be elephantized.
+-- Do not edit directly, use elephant_veins.register_ore() instead.
+elephant_veins.registered_ores = {}
+
+--- Registers an ore with Elephant Veins to be elephantized.
+-- NOTE: only ores with type "scatter" are currently supported.
+-- @param ore The ore to register. This is the same as with minetest.register_ore().
+-- @return Whether the ore was successfully registered.
+function elephant_veins.register_ore(ore)
+   local __func__ = "elephant_veins.register_ore"
+
+   if "table" ~= type(ore) then
+      _elephant_veins.log("error", __func__ .. ": got invalid ore '" .. dump(ore)
+                                   .. "'. Expected table, got '" .. type(ore) .. "'")
+      return false
+   end
+
+   -- Thusfar, the only ores to elephantize have been of type scatter.
+   if "scatter" ~= ore.ore_type then
+      _elephant_veins.log("error", __func__ .. ": unhandled ore.ore_type '"
+                                   .. dump(ore.ore_type)
+                                   .. "'. Expected one of: \"scatter\"")
+      return false
+   end
+
+   if "string" ~= type(ore.ore) then
+      _elephant_veins.log("error", __func__ .. ": got invalid ore.ore '" .. dump(ore.ore)
+                                   .. "'. Expected string, got '" .. type(ore.ore) .. "'")
+      return false
+   end
+
+   if "table" == type(ore.wherein) then
+      for _, value in pairs(ore.wherein) do
+         if "string" ~= type(value) then
+            _elephant_veins.log("error", __func__ .. ": got invalid ore.wherein '"
+                                   .. dump(ore.wherein)
+                                   .. "'. Expected string or table of strings, but found "
+                                   .. "a '" .. type(ore.wherein) .. "' in the table")
+            return false
+         end
+      end
+   elseif "string" ~= type(ore.wherein) then
+      _elephant_veins.log("error", __func__ .. ": got invalid ore.wherein '"
+                                   .. dump(ore.wherein)
+                                   .. "'. Expected string or table of strings, got '"
+                                   .. type(ore.wherein) .. "'")
+      return false
+   end
+
+   _elephant_veins.log("verbose", __func__  .. ": registered ore '" .. ore.ore .. "'")
+   table.insert(elephant_veins.registered_ores, ore)
+   return true
+end
