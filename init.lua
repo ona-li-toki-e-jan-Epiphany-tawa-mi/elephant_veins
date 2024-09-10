@@ -17,6 +17,25 @@
 
 
 
+-- Global namespace.
+elephant_veins = {}
+
+-- Returns the value of a Elephant Veins setting. All settings are currently
+-- numbers, and are assumed to be such.
+function elephant_veins.get_setting(setting, default)
+   local value = minetest.settings:get("elephant_veins" .. "." .. setting);
+   if value then return tonumber(value) else return default end
+end
+
+
+
+-- Loads in settings.
+local vein_scarcity_multipler  = elephant_veins.get_setting("vein_scarcity_multipler",  150)
+local vein_ore_count_multipler = elephant_veins.get_setting("vein_ore_count_multipler", 150)
+local vein_size_multipler      = elephant_veins.get_setting("vein_size_multipler",      6)
+
+
+
 -- Modifies the registered ores to generate the "elephant veins."
 local function elephantify_ores()
    -- Modifying registered ores requires unregistering them and reregistering
@@ -28,9 +47,9 @@ local function elephantify_ores()
       if "default:stone" == ore.wherein and "scatter" == ore.ore_type then
          minetest.log("info", "Elephant Veins: elephantifying ore '" .. ore.ore .. "'")
 
-         ore.clust_scarcity = ore.clust_scarcity * 150
-         ore.clust_num_ores = ore.clust_num_ores * 150
-         ore.clust_size     = ore.clust_size     * 6
+         ore.clust_scarcity = ore.clust_scarcity * vein_scarcity_multipler
+         ore.clust_num_ores = ore.clust_num_ores * vein_ore_count_multipler
+         ore.clust_size     = ore.clust_size     * vein_size_multipler
       end
 
       minetest.register_ore(ore)
