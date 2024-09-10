@@ -20,14 +20,39 @@
 -- Global namespace.
 elephant_veins = {}
 
---- Returns the value of a Elephant Veins setting.
+--- Returns the value of an Elephant Veins setting.
 -- All settings are currently numbers, and are assumed to be such.
--- @param setting The name of the setting without the attached namespace.
+-- @param setting The name of the setting without the namespace.
 -- @param default The default value of the setting.
 function elephant_veins.get_setting(setting, default)
-   local value = minetest.settings:get("elephant_veins" .. "." .. setting);
-   return value and tonumber(value) or default
+   local setting_type = type(default)
+   local setting_name = "elephant_veins" .. "." .. setting
+
+   if "number" == setting_type then
+      return tonumber(minetest.settings:get(setting_name)) or default
+   elseif "boolean" == setting_type then
+      local value = minetest.settings:get_bool(setting_name)
+      if nil ~= value then return value else return default end
+   else
+      minetest.log("error", "Elephant Veins: elephant_veins.get_setting: unhandled type '"
+                            .. setting_type .. "' encountered with setting '" .. setting_name
+                            .. "'")
+   end
+
+   return default
 end
+
+
+
+--- Loads and executes an Elephant Veins Lua module.
+-- @param path The file path of the module relative to the Elephant Veins mod
+-- directory.
+-- @return The return value of the Lua module.
+local function load_module(path)
+   return dofile(minetest.get_modpath("elephant_veins") .. "/" .. path)
+end
+
+load_module("debug.lua")
 
 
 
@@ -35,8 +60,6 @@ end
 local vein_scarcity_multipler  = elephant_veins.get_setting("vein_scarcity_multipler",  150)
 local vein_ore_count_multipler = elephant_veins.get_setting("vein_ore_count_multipler", 150)
 local vein_size_multipler      = elephant_veins.get_setting("vein_size_multipler",      6)
-
-
 
 --- Returns whether the ore should be elephantified.
 local function is_elephantifyable(ore)

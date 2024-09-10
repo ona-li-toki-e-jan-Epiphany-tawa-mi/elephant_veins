@@ -1,10 +1,13 @@
 [elephant_veins]
 # Multiplier for the scarcity of all elephantized veins. Scarcity determines how
 # often the veins appear, a bigger number means less often.
-elephant_veins.vein_scarcity_multipler (Vein Scarcity Multiplier) int 150
+elephant_veins.vein_scarcity_multipler (Vein scarcity multiplier) int 150
 # Multiplier for the ore count of all elephantized veins. Ore count determines
 # how many ore blocks to place in the vein.
-elephant_veins.vein_ore_count_multipler (Vein Ore Count Multiplier) int 150
+elephant_veins.vein_ore_count_multipler (Vein ore count multiplier) int 150
 # Multiplier for the size of all elephantized vein. Size determines how far away
 # ore block can appear from the center of the vein.
-elephant_veins.vein_size_multipler (Vein Size Multiplier) int 6
+elephant_veins.vein_size_multipler (Vein size multiplier) int 6
+
+# Whether to log all registered ores in the current game. For debugging.
+elephant_veins.do_ore_dump_logging (Do ore dump logging) bool false
