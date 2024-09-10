@@ -28,6 +28,8 @@ local vein_size_multipler      = elephant_veins.get_setting("vein_size_multipler
 
 --- Returns whether the wherein values of two ores are equivalent.
 local function compare_ore_whereins(wherein1, wherein2)
+   local __func__ = "compare_ore_whereins"
+
    if type(wherein1) ~= type(wherein2) then return false end
 
    if "string" == type(wherein1) then
@@ -38,7 +40,7 @@ local function compare_ore_whereins(wherein1, wherein2)
       end
       return true
    else
-      _elephant_veins.log("error", "compare_ore_whereins: encountered unexpected wherein "
+      _elephant_veins.log("error", __func__ .. ": encountered unexpected wherein "
                                    .. "type '" .. type(wherein1) .. "'")
    end
 

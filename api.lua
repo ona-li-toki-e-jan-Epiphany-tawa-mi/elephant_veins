@@ -30,6 +30,8 @@ elephant_veins = {}
 -- @param default The default value of the setting.
 -- @return The settings value, or default if it is not set or doesn't exist.
 function elephant_veins.get_setting(setting, default)
+   local __func__ = "elephant_veins.get_setting"
+
    local setting_type = type(default)
    local setting_name = "elephant_veins" .. "." .. setting
 
@@ -39,9 +41,8 @@ function elephant_veins.get_setting(setting, default)
       local value = minetest.settings:get_bool(setting_name)
       if nil ~= value then return value else return default end
    else
-      _elephant_veins.log("error", "elephant_veins.get_setting: unhandled type '"
-                                   .. setting_type .. "' encountered with setting '"
-                                   .. setting_name .. "'")
+      _elephant_veins.log("error", __func__ .. ": unhandled type '" .. setting_type
+                                   .. "' encountered with setting '" .. setting_name .. "'")
    end
 
    return default

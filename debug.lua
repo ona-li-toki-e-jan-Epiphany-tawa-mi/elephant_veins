@@ -26,8 +26,10 @@ local do_ore_dump = elephant_veins.get_setting("do_ore_dump_logging", false)
 
 --- Logs a dump of all registered ores.
 local function log_ore_dump()
+   local __func__ = "log_ore_dump"
+
    for _, ore in pairs(minetest.registered_ores) do
-      _elephant_veins.log("warning", "ore dump: " .. dump(ore))
+      _elephant_veins.log("warning", __func__ .. ": " .. dump(ore))
    end
 end
 
