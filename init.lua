@@ -20,11 +20,13 @@
 -- Global namespace.
 elephant_veins = {}
 
--- Returns the value of a Elephant Veins setting. All settings are currently
--- numbers, and are assumed to be such.
+--- Returns the value of a Elephant Veins setting.
+-- All settings are currently numbers, and are assumed to be such.
+-- @param setting The name of the setting without the attached namespace.
+-- @param default The default value of the setting.
 function elephant_veins.get_setting(setting, default)
    local value = minetest.settings:get("elephant_veins" .. "." .. setting);
-   if value then return tonumber(value) else return default end
+   return value and tonumber(value) or default
 end
 
 
@@ -37,6 +39,7 @@ local vein_size_multipler      = elephant_veins.get_setting("vein_size_multipler
 
 
 -- Modifies the registered ores to generate the "elephant veins."
+--- Modifies the registered ores to generate the "elephant veins."
 local function elephantify_ores()
    -- Modifying registered ores requires unregistering them and reregistering
    -- the modified copies.
@@ -55,5 +58,4 @@ local function elephantify_ores()
       minetest.register_ore(ore)
    end
 end
-
 minetest.register_on_mods_loaded(elephantify_ores)
