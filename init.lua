@@ -37,6 +37,11 @@ function _elephant_veins.load_module(path)
    return loadfile(minetest.get_modpath("elephant_veins") .. "/" .. path)(_elephant_veins)
 end
 
+-- Returns whether the mod with the given name is enabled.
+function _elephant_veins.is_mod_enabled(name)
+   return minetest.modpath(name)
+end
+
 
 
 _elephant_veins.load_module("api.lua")
@@ -45,39 +50,41 @@ _elephant_veins.load_module("elephantify.lua")
 
 
 
--- Registers ores from default.
-elephant_veins.register_ore({
-      ore      = "default:stone_with_coal",
-      ore_type = "scatter",
-      wherein  = "default:stone"
-})
-elephant_veins.register_ore({
-      ore      = "default:stone_with_copper",
-      ore_type = "scatter",
-      wherein  = "default:stone"
-})
-elephant_veins.register_ore({
-      ore      = "default:stone_with_iron",
-      ore_type = "scatter",
-      wherein  = "default:stone"
-})
-elephant_veins.register_ore({
-      ore      = "default:stone_with_tin",
-      ore_type = "scatter",
-      wherein  = "default:stone"
-})
-elephant_veins.register_ore({
-      ore      = "default:stone_with_gold",
-      ore_type = "scatter",
-      wherein  = "default:stone"
-})
-elephant_veins.register_ore({
-      ore      = "default:stone_with_diamond",
-      ore_type = "scatter",
-      wherein  = "default:stone"
-})
-elephant_veins.register_ore({
-      ore      = "default:stone_with_mese",
-      ore_type = "scatter",
-      wherein  = "default:stone"
-})
+if _elephant_veins.is_mod_enabled("default") then
+   _elephant_veins.log("info", "registering ores for mod 'default'")
+   elephant_veins.register_ore({
+         ore      = "default:stone_with_coal",
+         ore_type = "scatter",
+         wherein  = "default:stone"
+   })
+   elephant_veins.register_ore({
+         ore      = "default:stone_with_copper",
+         ore_type = "scatter",
+         wherein  = "default:stone"
+   })
+   elephant_veins.register_ore({
+         ore      = "default:stone_with_iron",
+         ore_type = "scatter",
+         wherein  = "default:stone"
+   })
+   elephant_veins.register_ore({
+         ore      = "default:stone_with_tin",
+         ore_type = "scatter",
+         wherein  = "default:stone"
+   })
+   elephant_veins.register_ore({
+         ore      = "default:stone_with_gold",
+         ore_type = "scatter",
+         wherein  = "default:stone"
+   })
+   elephant_veins.register_ore({
+         ore      = "default:stone_with_diamond",
+         ore_type = "scatter",
+         wherein  = "default:stone"
+   })
+   elephant_veins.register_ore({
+         ore      = "default:stone_with_mese",
+         ore_type = "scatter",
+         wherein  = "default:stone"
+   })
+end
