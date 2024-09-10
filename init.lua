@@ -20,6 +20,15 @@
 -- Private "global" namespace passed to other Lua modules.
 local _elephant_veins = {}
 
+--- Wrapper for minetest.log().
+-- Adds a prefix to the text inidicating that the log message comes from
+-- Elephant Veins.
+-- @param level One of "none", "error", "warning", "action", "info", or "verbose".
+-- @param text The log message.
+function _elephant_veins.log(level, text)
+   minetest.log(level, "[elephant_veins] " .. text)
+end
+
 --- Loads and executes an Elephant Veins Lua module.
 -- @param path The file path of the module relative to the Elephant Veins mod
 -- directory.
@@ -47,9 +56,9 @@ function elephant_veins.get_setting(setting, default)
       local value = minetest.settings:get_bool(setting_name)
       if nil ~= value then return value else return default end
    else
-      minetest.log("error", "Elephant Veins: elephant_veins.get_setting: unhandled type '"
-                            .. setting_type .. "' encountered with setting '" .. setting_name
-                            .. "'")
+      _elephant_veins.log("error", "elephant_veins.get_setting: unhandled type '"
+                                   .. setting_type .. "' encountered with setting '"
+                                   .. setting_name .. "'")
    end
 
    return default
@@ -87,7 +96,7 @@ local function elephantify_ores()
 
    for _, ore in pairs(registered_ores) do
       if is_elephantifyable(ore) then
-         minetest.log("info", "Elephant Veins: elephantifying ore '" .. ore.ore .. "'")
+         _elephant_veins.log("info", "elephantifying ore '" .. ore.ore .. "'")
          elephantify_ore(ore)
       end
 

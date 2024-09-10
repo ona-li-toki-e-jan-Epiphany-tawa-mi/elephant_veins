@@ -17,6 +17,9 @@
 
 -- Debugging module.
 
+-- Imports private "global" namespace.
+_elephant_veins = ...
+
 
 
 local do_ore_dump = elephant_veins.get_setting("do_ore_dump_logging", false)
@@ -24,7 +27,7 @@ local do_ore_dump = elephant_veins.get_setting("do_ore_dump_logging", false)
 --- Logs a dump of all registered ores.
 local function log_ore_dump()
    for _, ore in pairs(minetest.registered_ores) do
-      minetest.log("warning", "Elephant Veins: ore dump: " .. dump(ore))
+      _elephant_veins.log("warning", "ore dump: " .. dump(ore))
    end
 end
 
