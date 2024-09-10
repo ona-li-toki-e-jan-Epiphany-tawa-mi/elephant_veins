@@ -38,7 +38,18 @@ local vein_size_multipler      = elephant_veins.get_setting("vein_size_multipler
 
 
 
--- Modifies the registered ores to generate the "elephant veins."
+--- Returns whether the ore should be elephantified.
+local function is_elephantifyable(ore)
+   return "default:stone" == ore.wherein and "scatter" == ore.ore_type
+end
+
+--- Applies the Elephant Veins transformations to the ore.
+local function elephantify_ore(ore)
+   ore.clust_scarcity = ore.clust_scarcity * vein_scarcity_multipler
+   ore.clust_num_ores = ore.clust_num_ores * vein_ore_count_multipler
+   ore.clust_size     = ore.clust_size     * vein_size_multipler
+end
+
 --- Modifies the registered ores to generate the "elephant veins."
 local function elephantify_ores()
    -- Modifying registered ores requires unregistering them and reregistering
@@ -47,12 +58,9 @@ local function elephantify_ores()
    minetest.clear_registered_ores()
 
    for _, ore in pairs(registered_ores) do
-      if "default:stone" == ore.wherein and "scatter" == ore.ore_type then
+      if is_elephantifyable(ore) then
          minetest.log("info", "Elephant Veins: elephantifying ore '" .. ore.ore .. "'")
-
-         ore.clust_scarcity = ore.clust_scarcity * vein_scarcity_multipler
-         ore.clust_num_ores = ore.clust_num_ores * vein_ore_count_multipler
-         ore.clust_size     = ore.clust_size     * vein_size_multipler
+         elephantify_ore(ore)
       end
 
       minetest.register_ore(ore)
