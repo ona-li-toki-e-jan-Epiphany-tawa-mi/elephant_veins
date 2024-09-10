@@ -17,6 +17,19 @@
 
 
 
+-- Private "global" namespace passed to other Lua modules.
+local _elephant_veins = {}
+
+--- Loads and executes an Elephant Veins Lua module.
+-- @param path The file path of the module relative to the Elephant Veins mod
+-- directory.
+-- @return The return value of the Lua module.
+function _elephant_veins.load_module(path)
+   return loadfile(minetest.get_modpath("elephant_veins") .. "/" .. path)(_elephant_veins)
+end
+
+
+
 -- Global namespace.
 elephant_veins = {}
 
@@ -44,15 +57,7 @@ end
 
 
 
---- Loads and executes an Elephant Veins Lua module.
--- @param path The file path of the module relative to the Elephant Veins mod
--- directory.
--- @return The return value of the Lua module.
-local function load_module(path)
-   return dofile(minetest.get_modpath("elephant_veins") .. "/" .. path)
-end
-
-load_module("debug.lua")
+_elephant_veins.load_module("debug.lua")
 
 
 
