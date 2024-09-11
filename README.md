@@ -8,7 +8,7 @@ ore veins.
 
 Currently compatible with:
 
-- Mintest Game ([https://content.minetest.net/packages/Minetest/minetest_game](https://content.minetest.net/packages/Minetest/minetest_game))
+- Mintest Game - [https://content.minetest.net/packages/Minetest/minetest_game](https://content.minetest.net/packages/Minetest/minetest_game)
 
 ## How to install
 
@@ -18,7 +18,7 @@ Place this directory into the mods folder in your Minetest directory.
 
 Dependencies:
 
-- luacheck - [https://luarocks.org/modules/lunarmodules/luacheck](https://luarocks.org/modules/lunarmodules/luacheck)
+- luacheck - [https://github.com/lunarmodules/luacheck](https://github.com/lunarmodules/luacheck)
 
 There is a `flake.nix` you can use with `nix develop path:.` to generate a
 development enviroment.
