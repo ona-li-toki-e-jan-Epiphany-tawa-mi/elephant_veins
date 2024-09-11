@@ -44,9 +44,9 @@ end
 
 
 
-_elephant_veins.load_module("api.lua")
-_elephant_veins.load_module("debug.lua")
-_elephant_veins.load_module("elephantify.lua")
+_elephant_veins.load_module("src/api.lua")
+_elephant_veins.load_module("src/debug.lua")
+_elephant_veins.load_module("src/elephantify.lua")
 
 
 
