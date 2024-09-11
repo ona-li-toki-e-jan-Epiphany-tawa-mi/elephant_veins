@@ -6,9 +6,20 @@ A mod for Minetest ([https://minetest.net](https://minetest.net)) that modifies
 ore generation to replace the small sporadic ore pockets with sparse, gigantic
 ore veins.
 
-Currently compatible with:
+The size, density, and frequency of ore veins are configurable in the settings
+menu.
+
+Currently compatible with the following games:
 
 - Mintest Game - [https://content.minetest.net/packages/Minetest/minetest_game](https://content.minetest.net/packages/Minetest/minetest_game)
+- Mineclonia - [https://content.minetest.net/packages/ryvnf/mineclonia](https://content.minetest.net/packages/ryvnf/mineclonia)
+
+When playing with Mineclonia, I recommend using the following settings instead
+of the defaults:
+
+- Vein scarcity multiplier - 350.
+- Vein ore count multiplier - 1000.
+- Vein size multiplier - 10.
 
 ## How to install
 

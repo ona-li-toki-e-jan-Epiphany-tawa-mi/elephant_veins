@@ -50,6 +50,7 @@ _elephant_veins.load_module("src/elephantify.lua")
 
 
 
+-- Minetest Game support.
 if _elephant_veins.is_mod_enabled("default") then
    _elephant_veins.log("info", "registering ores for mod 'default'")
    elephant_veins.register_ore({
@@ -86,5 +87,187 @@ if _elephant_veins.is_mod_enabled("default") then
          ore      = "default:stone_with_mese",
          ore_type = "scatter",
          wherein  = "default:stone"
+   })
+end
+
+-- Mineclonia support.
+if _elephant_veins.is_mod_enabled("mcl_core") then
+   _elephant_veins.log("info", "registering ores for mod 'mcl_core'")
+   elephant_veins.register_ore({
+         ore      = "mcl_core:stone_with_coal",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_core:stone",
+            "mcl_core:diorite",
+            "mcl_core:andesite",
+            "mcl_core:granite"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_core:stone_with_iron",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_core:stone",
+            "mcl_core:diorite",
+            "mcl_core:andesite",
+            "mcl_core:granite"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_core:stone_with_gold",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_core:stone",
+            "mcl_core:diorite",
+            "mcl_core:andesite",
+            "mcl_core:granite"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_core:stone_with_lapis",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_core:stone",
+            "mcl_core:diorite",
+            "mcl_core:andesite",
+            "mcl_core:granite"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_core:stone_with_redstone",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_core:stone",
+            "mcl_core:diorite",
+            "mcl_core:andesite",
+            "mcl_core:granite"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_core:stone_with_diamond",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_core:stone",
+            "mcl_core:diorite",
+            "mcl_core:andesite",
+            "mcl_core:granite"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_core:stone_with_emerald",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_core:stone",
+            "mcl_core:diorite",
+            "mcl_core:andesite",
+            "mcl_core:granite"
+         }
+   })
+end
+if _elephant_veins.is_mod_enabled("mcl_copper") then
+   _elephant_veins.log("info", "registering ores for mod 'mcl_copper'")
+   elephant_veins.register_ore({
+         ore      = "mcl_copper:stone_with_copper",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_core:stone",
+            "mcl_core:diorite",
+            "mcl_core:andesite",
+            "mcl_core:granite"
+         }
+   })
+end
+if _elephant_veins.is_mod_enabled("mcl_deepslate") then
+   _elephant_veins.log("info", "registering ores for mod 'mcl_deepslate'")
+   elephant_veins.register_ore({
+         ore      = "mcl_deepslate:deepslate_with_coal",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_deepslate:deepslate",
+            "mcl_deepslate:tuff"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_deepslate:deepslate_with_copper",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_deepslate:deepslate",
+            "mcl_deepslate:tuff"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_deepslate:deepslate_with_iron",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_deepslate:deepslate",
+            "mcl_deepslate:tuff"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_deepslate:deepslate_with_gold",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_deepslate:deepslate",
+            "mcl_deepslate:tuff"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_deepslate:deepslate_with_lapis",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_deepslate:deepslate",
+            "mcl_deepslate:tuff"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_deepslate:deepslate_with_redstone",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_deepslate:deepslate",
+            "mcl_deepslate:tuff"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_deepslate:deepslate_with_diamond",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_deepslate:deepslate",
+            "mcl_deepslate:tuff"
+         }
+   })
+   elephant_veins.register_ore({
+         ore      = "mcl_deepslate:deepslate_with_emerald",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_deepslate:deepslate",
+            "mcl_deepslate:tuff"
+         }
+   })
+end
+if _elephant_veins.is_mod_enabled("mcl_nether") then
+   _elephant_veins.log("info", "registering ores for mod 'mcl_nether'")
+   elephant_veins.register_ore({
+         ore      = "mcl_nether:quartz_ore",
+         ore_type = "scatter",
+         wherein  = {
+            "mcl_nether:netherrack"
+         }
+   })
+    elephant_veins.register_ore({
+          ore      = "mcl_nether:ancient_debris",
+          ore_type = "scatter",
+          wherein  = {
+             "mcl_nether:netherrack",
+             "mcl_blackstone:blackstone",
+             "mcl_blackstone:basalt"
+          }
+    })
+end
+if _elephant_veins.is_mod_enabled("mcl_blackstone") then
+   _elephant_veins.log("info", "registering ores for mod 'mcl_blackstone'")
+   elephant_veins.register_ore({
+         ore      = "mcl_blackstone:nether_gold",
+         ore_type = "scatter",
+         wherein  = "mcl_nether:netherrack"
    })
 end
