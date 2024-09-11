@@ -28,3 +28,8 @@ Then, run the following command(s):
 ```sh
 luacheck .
 ```
+
+## API
+
+There is an API for other mods to register their ores with Elephant Veins, see
+`src/api.lua` for details.
