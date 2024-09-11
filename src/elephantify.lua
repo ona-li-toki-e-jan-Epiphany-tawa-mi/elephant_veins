@@ -22,9 +22,9 @@ local _elephant_veins = ...
 
 
 
-local vein_scarcity_multipler  = elephant_veins.get_setting("vein_scarcity_multipler",  150)
+local vein_scarcity_multipler  = elephant_veins.get_setting("vein_scarcity_multipler",  300)
 local vein_ore_count_multipler = elephant_veins.get_setting("vein_ore_count_multipler", 150)
-local vein_size_multipler      = elephant_veins.get_setting("vein_size_multipler",      6)
+local vein_size_multipler      = elephant_veins.get_setting("vein_size_multipler",      9)
 
 --- Returns whether the wherein values of two ores are equivalent.
 local function compare_ore_whereins(wherein1, wherein2)
