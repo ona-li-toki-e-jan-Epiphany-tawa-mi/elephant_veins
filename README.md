@@ -14,6 +14,10 @@ Currently compatible with the following games:
 - Mintest Game - [https://content.minetest.net/packages/Minetest/minetest_game](https://content.minetest.net/packages/Minetest/minetest_game)
 - Mineclonia - [https://content.minetest.net/packages/ryvnf/mineclonia](https://content.minetest.net/packages/ryvnf/mineclonia)
 
+It should theoretically work with VoxeLibre
+([https://content.minetest.net/packages/Wuzzy/mineclone2](https://content.minetest.net/packages/Wuzzy/mineclone2))
+too, but it only seems to generate iron and copper in the overworld.
+
 When playing with Mineclonia, I recommend using the following settings instead
 of the defaults:
 
