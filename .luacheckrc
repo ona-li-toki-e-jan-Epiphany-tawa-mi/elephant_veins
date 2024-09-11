@@ -12,7 +12,7 @@ globals = { "minetest" }
 
 read_globals = {
     -- Removes warning for using table methods.
-    table = { fields = { "index_of", "copy" } },
+    table = { fields = { "indexof", "copy" } },
 
     -- Removes warning for using builtin methods.
     "dump"

@@ -36,7 +36,7 @@ local function compare_ore_whereins(wherein1, wherein2)
       return wherein1 == wherein2
    elseif "table" == type(wherein1) then
       for _, wherein1_block in pairs(wherein1) do
-         if -1 == table.index_of(wherein2, wherein1_block) then return false end
+         if -1 == table.indexof(wherein2, wherein1_block) then return false end
       end
       return true
    else
