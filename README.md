@@ -12,7 +12,8 @@ Currently compatible with:
 
 ## How to install
 
-Place this directory into the mods folder in your Minetest directory.
+Place this directory, symlink it, into the mods folder in your Minetest
+directory.
 
 ## How to test
 
