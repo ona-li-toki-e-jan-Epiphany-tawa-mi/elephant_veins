@@ -39,7 +39,7 @@ end
 
 -- Returns whether the mod with the given name is enabled.
 function _elephant_veins.is_mod_enabled(name)
-   return minetest.modpath(name)
+   return nil ~= minetest.get_modpath(name)
 end
 
 
