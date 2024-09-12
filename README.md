@@ -27,8 +27,10 @@ of the defaults:
 
 ## How to install
 
-Place this directory, symlink it, into the mods folder in your Minetest
-directory.
+You can install it from ContentDB ([https://content.minetest.net/packages/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins](https://content.minetest.net/packages/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins)).
+
+Or, you can place this directory, or symlink it, into the mods folder in your
+Minetest directory.
 
 ## How to test
 
