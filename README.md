@@ -51,3 +51,7 @@ luacheck .
 
 There is an API for other mods to register their ores with Elephant Veins, see
 `src/api.lua` for details.
+
+## Release notes
+
+- Initial release.
