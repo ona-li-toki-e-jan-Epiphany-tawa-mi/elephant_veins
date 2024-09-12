@@ -11,7 +11,7 @@ menu.
 
 Currently compatible with the following games:
 
-- Mintest Game - [https://content.minetest.net/packages/Minetest/minetest_game](https://content.minetest.net/packages/Minetest/minetest_game)
+- Minetest Game - [https://content.minetest.net/packages/Minetest/minetest_game](https://content.minetest.net/packages/Minetest/minetest_game)
 - Mineclonia - [https://content.minetest.net/packages/ryvnf/mineclonia](https://content.minetest.net/packages/ryvnf/mineclonia)
 
 It should theoretically work with VoxeLibre
