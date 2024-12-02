@@ -52,3 +52,9 @@ luacheck .
 
 There is an API for other mods to register their ores with Elephant Veins, see
 `src/api.lua` for details.
+
+## Release notes
+
+- Switched from `minetest` namespace to `core`.
+- Replaced error logging in API and elsewhere with assertions.
+- Set development state to maintenence only.
