@@ -36,9 +36,9 @@ function elephant_veins.get_setting(setting, default)
    local setting_name = "elephant_veins" .. "." .. setting
 
    if "number" == setting_type then
-      return tonumber(minetest.settings:get(setting_name)) or default
+      return tonumber(core.settings:get(setting_name)) or default
    elseif "boolean" == setting_type then
-      local value = minetest.settings:get_bool(setting_name)
+      local value = core.settings:get_bool(setting_name)
       if nil ~= value then return value else return default end
    else
       _elephant_veins.log("error", __func__ .. ": unhandled type '" .. setting_type
@@ -51,7 +51,7 @@ end
 
 
 --- A table of the ores registered with Elephant Veins to be elephantized.
--- The ores registered by minetest.register_ore() will be compared against these
+-- The ores registered by core.register_ore() will be compared against these
 --   ores. If they have the same name, type, and occur in the same blocks as one
 --   of the ores in this table, they will be elephantized.
 -- Do not edit directly, use elephant_veins.register_ore() instead.
@@ -59,7 +59,7 @@ elephant_veins.registered_ores = {}
 
 --- Registers an ore with Elephant Veins to be elephantized.
 -- NOTE: only ores with type "scatter" are currently supported.
--- @param ore The ore to register. This is the same as with minetest.register_ore().
+-- @param ore The ore to register. This is the same as with core.register_ore().
 -- @return Whether the ore was successfully registered.
 function elephant_veins.register_ore(ore)
    local __func__ = "elephant_veins.register_ore"

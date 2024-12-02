@@ -73,8 +73,8 @@ local function elephantify_ores()
 
    -- Modifying registered ores requires unregistering them and reregistering
    -- the modified copies.
-   local registered_ores = table.copy(minetest.registered_ores)
-   minetest.clear_registered_ores()
+   local registered_ores = table.copy(core.registered_ores)
+   core.clear_registered_ores()
 
    for _, ore in pairs(registered_ores) do
       if is_elephantifyable(ore) then
@@ -84,7 +84,7 @@ local function elephantify_ores()
          _elephant_veins.log("info", __func__ .. ": skipping ore '" .. ore.ore .. "'")
       end
 
-      minetest.register_ore(ore)
+      core.register_ore(ore)
    end
 end
-minetest.register_on_mods_loaded(elephantify_ores)
+core.register_on_mods_loaded(elephantify_ores)

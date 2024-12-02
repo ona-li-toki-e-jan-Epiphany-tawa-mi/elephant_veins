@@ -6,7 +6,7 @@
 allow_defined_top = true
 
 -- Removes warning for use of the minetest namespace.
-globals = { "minetest" }
+globals = { "core" }
 
 read_globals = {
     -- Removes warning for using table methods.

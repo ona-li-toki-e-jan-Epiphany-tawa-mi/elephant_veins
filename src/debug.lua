@@ -28,11 +28,11 @@ local do_ore_dump = elephant_veins.get_setting("do_ore_dump_logging", false)
 local function log_ore_dump()
    local __func__ = "log_ore_dump"
 
-   for _, ore in pairs(minetest.registered_ores) do
+   for _, ore in pairs(core.registered_ores) do
       _elephant_veins.log("warning", __func__ .. ": " .. dump(ore))
    end
 end
 
 if do_ore_dump then
-   minetest.register_on_mods_loaded(log_ore_dump)
+   core.register_on_mods_loaded(log_ore_dump)
 end
