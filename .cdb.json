@@ -1,0 +1,12 @@
+{
+    "type": "MOD",
+    "title": "Elephant Veins",
+    "short_description": "Replaces small, sporadic ore pockets with sparse, gigantic ore veins.",
+    "dev_state": "MAINTENANCE_ONLY",
+    "tags": [ "environment", "mapgen", "survival" ],
+    "license": "LGPL-3.0-or-later",
+    "media_license": "LGPL-3.0-or-later",
+    "repo": "https://github.com/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins",
+    "website": "https://github.com/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins",
+    "issue_tracker": "https://github.com/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins/issues"
+}

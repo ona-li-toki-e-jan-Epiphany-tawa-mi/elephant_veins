@@ -1,0 +1,7 @@
+# Prevents certain files from being put into the ContentDB releases.
+
+.* export-ignore
+
+# Nix.
+flake.nix  export-ignore
+flake.lock export-ignore
