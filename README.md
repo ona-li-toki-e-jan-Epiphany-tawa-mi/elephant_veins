@@ -11,11 +11,11 @@ menu.
 
 Currently compatible with the following games:
 
-- Minetest Game - [https://content.minetest.net/packages/Minetest/minetest_game](https://content.minetest.net/packages/Minetest/minetest_game)
-- Mineclonia - [https://content.minetest.net/packages/ryvnf/mineclonia](https://content.minetest.net/packages/ryvnf/mineclonia)
+- Minetest Game - [https://content.luanti.org/packages/Minetest/minetest_game](https://content.luanti.org/packages/Minetest/minetest_game)
+- Mineclonia - [https://content.luanti.org/packages/ryvnf/mineclonia](https://content.luanti.org/packages/ryvnf/mineclonia)
 
 It should theoretically work with VoxeLibre
-([https://content.minetest.net/packages/Wuzzy/mineclone2](https://content.minetest.net/packages/Wuzzy/mineclone2))
+[https://content.luanti.org/packages/Wuzzy/mineclone2](https://content.luanti.org/packages/Wuzzy/mineclone2)
 too, but it only seems to generate iron and copper in the overworld.
 
 When playing with Mineclonia, I recommend using the following settings instead
@@ -27,7 +27,8 @@ of the defaults:
 
 ## How to install
 
-You can install it from ContentDB ([https://content.minetest.net/packages/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins](https://content.minetest.net/packages/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins)).
+You can install it from ContentDB
+[https://content.luanti.org/packages/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins](https://content.luanti.org/packages/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins).
 
 Or, you can place this directory, or symlink it, into the mods folder in your
 Minetest directory.
@@ -51,7 +52,3 @@ luacheck .
 
 There is an API for other mods to register their ores with Elephant Veins, see
 `src/api.lua` for details.
-
-## Release notes
-
-- Initial release.

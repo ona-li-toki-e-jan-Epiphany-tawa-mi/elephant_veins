@@ -2,8 +2,6 @@
 
 -- luacheck configuration.
 
-
-
 -- Removes warning for use of non-standard global variables.
 allow_defined_top = true
 
