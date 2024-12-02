@@ -30,8 +30,6 @@ elephant_veins = {}
 -- @param default The default value of the setting.
 -- @return The settings value, or default if it is not set or doesn't exist.
 function elephant_veins.get_setting(setting, default)
-   local __func__ = "elephant_veins.get_setting"
-
    local setting_type = type(default)
    local setting_name = "elephant_veins" .. "." .. setting
 
@@ -41,8 +39,11 @@ function elephant_veins.get_setting(setting, default)
       local value = core.settings:get_bool(setting_name)
       if nil ~= value then return value else return default end
    else
-      _elephant_veins.log("error", __func__ .. ": unhandled type '" .. setting_type
-                                   .. "' encountered with setting '" .. setting_name .. "'")
+      assert(
+         false,
+         "unhandled type '" .. setting_type .. "' encountered with setting '"
+         .. setting_name .. "'"
+      )
    end
 
    return default
@@ -60,49 +61,50 @@ elephant_veins.registered_ores = {}
 --- Registers an ore with Elephant Veins to be elephantized.
 -- NOTE: only ores with type "scatter" are currently supported.
 -- @param ore The ore to register. This is the same as with core.register_ore().
--- @return Whether the ore was successfully registered.
 function elephant_veins.register_ore(ore)
    local __func__ = "elephant_veins.register_ore"
 
-   if "table" ~= type(ore) then
-      _elephant_veins.log("error", __func__ .. ": got invalid ore '" .. dump(ore)
-                                   .. "'. Expected table, got '" .. type(ore) .. "'")
-      return false
-   end
+   assert(
+      "table" == type(ore),
+      "expected table for ore parameter, got '" .. type(ore) .. "'"
+   )
 
    -- Thusfar, the only ores to elephantize have been of type scatter.
-   if "scatter" ~= ore.ore_type then
-      _elephant_veins.log("error", __func__ .. ": unhandled ore.ore_type '"
-                                   .. dump(ore.ore_type)
-                                   .. "'. Expected one of: \"scatter\"")
-      return false
-   end
+   assert(
+      "scatter" == ore.ore_type,
+      "got invalid ore.ore_type '" .. dump(ore.ore_type)
+      .. "': expected one of: \"scatter\""
+   )
 
-   if "string" ~= type(ore.ore) then
-      _elephant_veins.log("error", __func__ .. ": got invalid ore.ore '" .. dump(ore.ore)
-                                   .. "'. Expected string, got '" .. type(ore.ore) .. "'")
-      return false
-   end
+   assert(
+      "string" == type(ore.ore),
+      "got invalid ore.ore '" .. dump(ore.ore) .. "': expected string, got '"
+      .. type(ore.ore) .. "'"
+   )
 
-   if "table" == type(ore.wherein) then
-      for _, value in pairs(ore.wherein) do
-         if "string" ~= type(value) then
-            _elephant_veins.log("error", __func__ .. ": got invalid ore.wherein '"
-                                   .. dump(ore.wherein)
-                                   .. "'. Expected string or table of strings, but found "
-                                   .. "a '" .. type(ore.wherein) .. "' in the table")
-            return false
-         end
+   local wherein_type = type(ore.wherein)
+   assert(
+      "table" == wherein_type or "string" == wherein_type,
+      "got invalid ore.wherein '" .. dump(ore.wherein)
+      .. "'. Expected string or table of strings, got '" .. wherein_type
+      .. "'"
+   )
+   if "table" == wherein_type then
+      for i, value in pairs(ore.wherein) do
+         assert(
+            "string" == type(value),
+            "got invalid ore.wherein '" .. dump(ore.wherein)
+            .. "'. Expected string or table of strings, but found a '"
+            .. wherein_type .. "' in the table at index '" .. dump(i)
+            .. "'"
+         )
       end
-   elseif "string" ~= type(ore.wherein) then
-      _elephant_veins.log("error", __func__ .. ": got invalid ore.wherein '"
-                                   .. dump(ore.wherein)
-                                   .. "'. Expected string or table of strings, got '"
-                                   .. type(ore.wherein) .. "'")
-      return false
    end
 
-   _elephant_veins.log("verbose", __func__  .. ": registered ore '" .. ore.ore .. "'")
+   _elephant_veins.log(
+      "verbose",
+      __func__  .. ": registered ore '" .. ore.ore .. "'"
+   )
+
    table.insert(elephant_veins.registered_ores, ore)
-   return true
 end

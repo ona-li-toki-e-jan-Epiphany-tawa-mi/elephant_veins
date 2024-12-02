@@ -22,14 +22,15 @@ local _elephant_veins = ...
 
 
 
-local vein_scarcity_multipler  = elephant_veins.get_setting("vein_scarcity_multipler",  300)
-local vein_ore_count_multipler = elephant_veins.get_setting("vein_ore_count_multipler", 150)
-local vein_size_multipler      = elephant_veins.get_setting("vein_size_multipler",      9)
+local vein_scarcity_multipler = elephant_veins.get_setting(
+   "vein_scarcity_multipler", 300)
+local vein_ore_count_multipler = elephant_veins.get_setting(
+   "vein_ore_count_multipler", 150)
+local vein_size_multipler = elephant_veins.get_setting(
+   "vein_size_multipler", 9)
 
 --- Returns whether the wherein values of two ores are equivalent.
 local function compare_ore_whereins(wherein1, wherein2)
-   local __func__ = "compare_ore_whereins"
-
    if type(wherein1) ~= type(wherein2) then return false end
 
    if "string" == type(wherein1) then
@@ -40,8 +41,10 @@ local function compare_ore_whereins(wherein1, wherein2)
       end
       return true
    else
-      _elephant_veins.log("error", __func__ .. ": encountered unexpected wherein "
-                                   .. "type '" .. type(wherein1) .. "'")
+      assert(
+         false,
+         "encountered unexpected wherein " .. "type '" .. type(wherein1) .. "'"
+      )
    end
 
    return false
@@ -50,7 +53,8 @@ end
 --- Returns whether the ore should be elephantified.
 local function is_elephantifyable(ore)
    for _, registered_ore in pairs(elephant_veins.registered_ores) do
-      if ore.ore == registered_ore.ore and ore.ore_type == registered_ore.ore_type
+      if ore.ore == registered_ore.ore
+         and ore.ore_type == registered_ore.ore_type
          and compare_ore_whereins(ore.wherein, registered_ore.wherein)
       then
          return true
@@ -78,10 +82,16 @@ local function elephantify_ores()
 
    for _, ore in pairs(registered_ores) do
       if is_elephantifyable(ore) then
-         _elephant_veins.log("info", __func__ .. ": elephantifying ore '" .. ore.ore .. "'")
+         _elephant_veins.log(
+            "info",
+            __func__ .. ": elephantifying ore '" .. ore.ore .. "'"
+         )
          elephantify_ore(ore)
       else
-         _elephant_veins.log("info", __func__ .. ": skipping ore '" .. ore.ore .. "'")
+         _elephant_veins.log(
+            "info",
+            __func__ .. ": skipping ore '" .. ore.ore .. "'"
+         )
       end
 
       core.register_ore(ore)
