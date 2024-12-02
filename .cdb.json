@@ -2,7 +2,7 @@
     "type": "MOD",
     "title": "Elephant Veins",
     "short_description": "Replaces small, sporadic ore pockets with sparse, gigantic ore veins.",
-    "dev_state": "BETA",
+    "dev_state": "MAINTENANCE_ONLY",
     "tags": [ "environment", "mapgen", "survival" ],
     "license": "LGPL-3.0-or-later",
     "media_license": "LGPL-3.0-or-later",
