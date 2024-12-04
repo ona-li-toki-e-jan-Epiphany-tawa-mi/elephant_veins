@@ -2,7 +2,7 @@
 
 # Elephant Veins
 
-A mod for Minetest ([https://minetest.net](https://minetest.net)) that modifies
+A mod for Luanti [https://www.luanti.org](https://www.luanti.org/) that modifies
 ore generation to replace the small sporadic ore pockets with sparse, gigantic
 ore veins.
 
