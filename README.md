@@ -39,8 +39,8 @@ Dependencies:
 
 - luacheck - [https://github.com/lunarmodules/luacheck](https://github.com/lunarmodules/luacheck)
 
-There is a `flake.nix` you can use with `nix develop path:.` to generate a
-development enviroment.
+There is a `flake.nix` you can use with `nix develop` to generate a development
+enviroment.
 
 Then, run the following command(s):
 
