@@ -21,24 +21,26 @@
 local _elephant_veins = {}
 
 --- Wrapper for core.log().
--- Adds a prefix to the text inidicating that the log message comes from
--- Elephant Veins.
--- @param level One of "none", "error", "warning", "action", "info", or "verbose".
--- @param text The log message.
+--- Adds a prefix to the text inidicating that the log message comes from
+--- Elephant Veins.
+--- @param level LogLevel
+--- @param text string
 function _elephant_veins.log(level, text)
    core.log(level, "[elephant_veins] " .. text)
 end
 
 --- Loads and executes an Elephant Veins Lua module.
--- @param path The file path of the module relative to the Elephant Veins mod
--- directory.
--- @return The return value of the Lua module.
+--- @param path string The file path of the module relative to the Elephant Veins
+--- mod directory.
+--- @return any The return value of the Lua module.
 function _elephant_veins.load_module(path)
    return loadfile(
       core.get_modpath("elephant_veins") .. "/" .. path)(_elephant_veins)
 end
 
--- Returns whether the mod with the given name is enabled.
+--- Returns whether the mod with the given name is enabled.
+--- @param name string
+--- @return boolean
 function _elephant_veins.is_mod_enabled(name)
    return nil ~= core.get_modpath(name)
 end

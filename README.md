@@ -37,7 +37,8 @@ Minetest directory.
 
 Dependencies:
 
-- luacheck - [https://github.com/lunarmodules/luacheck](https://github.com/lunarmodules/luacheck)
+- Lua - [https://www.lua.org](https://www.lua.org/)
+- lua-language-server - [https://github.com/LuaLS/lua-language-server](https://github.com/LuaLS/lua-language-server)
 
 There is a `flake.nix` you can use with `nix develop` to generate a development
 enviroment.
@@ -45,16 +46,10 @@ enviroment.
 Then, run the following command(s):
 
 ```sh
-luacheck .
+./tools/static-analysis.lua
 ```
 
 ## API
 
 There is an API for other mods to register their ores with Elephant Veins, see
 `src/api.lua` for details.
-
-## Release notes
-
-- Switched from `minetest` namespace to `core`.
-- Replaced error logging in API and elsewhere with assertions.
-- Set development state to maintenence only.

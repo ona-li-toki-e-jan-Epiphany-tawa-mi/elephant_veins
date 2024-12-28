@@ -26,9 +26,10 @@ local _elephant_veins = ...
 elephant_veins = {}
 
 --- Returns the value of an Elephant Veins setting.
--- @param setting The name of the setting without the namespace.
--- @param default The default value of the setting.
--- @return The settings value, or default if it is not set or doesn't exist.
+--- @param setting string The name of the setting without the namespace.
+--- @param default number|boolean The default value of the setting.
+--- @return number|boolean The settings value, or default if it is not set or
+--- doesn't exist.
 function elephant_veins.get_setting(setting, default)
    local setting_type = type(default)
    local setting_name = "elephant_veins" .. "." .. setting
@@ -37,7 +38,12 @@ function elephant_veins.get_setting(setting, default)
       return tonumber(core.settings:get(setting_name)) or default
    elseif "boolean" == setting_type then
       local value = core.settings:get_bool(setting_name)
-      if nil ~= value then return value else return default end
+      if nil ~= value then
+         --- @cast value boolean
+         return value
+      else
+         return default
+      end
    else
       assert(
          false,
@@ -52,15 +58,20 @@ end
 
 
 --- A table of the ores registered with Elephant Veins to be elephantized.
--- The ores registered by core.register_ore() will be compared against these
---   ores. If they have the same name, type, and occur in the same blocks as one
---   of the ores in this table, they will be elephantized.
--- Do not edit directly, use elephant_veins.register_ore() instead.
+---
+--- The ores registered by core.register_ore() will be comparaed against these
+--- ores. If they have the same name, type, and occur in the same blocks as one
+--- of the ores in this table, they will be elephantized.
+---
+--- Do not edit directly, use elephant_veins.register_ore() instead.
+---
+--- @type table<string, ScatterOre>
 elephant_veins.registered_ores = {}
 
 --- Registers an ore with Elephant Veins to be elephantized.
--- NOTE: only ores with type "scatter" are currently supported.
--- @param ore The ore to register. This is the same as with core.register_ore().
+--- NOTE: only ores with type "scatter" are currently supported.
+--- @param ore ScatterOre The ore to register. This is the same as with
+--- core.register_ore().
 function elephant_veins.register_ore(ore)
    local __func__ = "elephant_veins.register_ore"
 
@@ -90,7 +101,10 @@ function elephant_veins.register_ore(ore)
       .. "'"
    )
    if "table" == wherein_type then
-      for i, value in pairs(ore.wherein) do
+      local wherein = ore.wherein
+      --- @cast wherein table
+
+      for i, value in pairs(wherein) do
          assert(
             "string" == type(value),
             "got invalid ore.wherein '" .. dump(ore.wherein)

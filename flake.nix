@@ -30,9 +30,7 @@
       devShells = forAllSystems ({ pkgs }: {
         default = with pkgs; mkShell {
           packages = [
-            minetest
-
-            luaPackages.luacheck
+            lua lua-language-server
           ];
         };
       });

@@ -30,20 +30,26 @@ local vein_size_multipler = elephant_veins.get_setting(
    "vein_size_multipler", 9)
 
 --- Returns whether the wherein values of two ores are equivalent.
+--- @param wherein1 OreWherein
+--- @param wherein2 OreWherein
+--- @return boolean
 local function compare_ore_whereins(wherein1, wherein2)
    if type(wherein1) ~= type(wherein2) then return false end
 
    if "string" == type(wherein1) then
       return wherein1 == wherein2
    elseif "table" == type(wherein1) then
+      --- @cast wherein1 string[]
+      --- @cast wherein2 string[]
       for _, wherein1_block in pairs(wherein1) do
          if -1 == table.indexof(wherein2, wherein1_block) then return false end
       end
+
       return true
    else
       assert(
          false,
-         "encountered unexpected wherein " .. "type '" .. type(wherein1) .. "'"
+         "encountered unexpected wherein type '" .. type(wherein1) .. "'"
       )
    end
 
@@ -51,6 +57,8 @@ local function compare_ore_whereins(wherein1, wherein2)
 end
 
 --- Returns whether the ore should be elephantified.
+--- @param ore ScatterOre
+--- @return boolean
 local function is_elephantifyable(ore)
    for _, registered_ore in pairs(elephant_veins.registered_ores) do
       if ore.ore == registered_ore.ore
@@ -65,6 +73,7 @@ local function is_elephantifyable(ore)
 end
 
 --- Applies the Elephant Veins transformations to the ore.
+--- @param ore ScatterOre
 local function elephantify_ore(ore)
    ore.clust_scarcity = ore.clust_scarcity * vein_scarcity_multipler
    ore.clust_num_ores = ore.clust_num_ores * vein_ore_count_multipler
