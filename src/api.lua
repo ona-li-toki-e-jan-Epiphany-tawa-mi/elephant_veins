@@ -20,10 +20,12 @@
 -- Imports private namespace.
 local _elephant_veins = ...
 
-
-
 -- Global namespace.
 elephant_veins = {}
+
+--------------------------------------------------------------------------------
+-- Utilities                                                                  --
+--------------------------------------------------------------------------------
 
 --- Returns the value of an Elephant Veins setting.
 --- @param setting string The name of the setting without the namespace.
@@ -55,7 +57,9 @@ function elephant_veins.get_setting(setting, default)
    return default
 end
 
-
+--------------------------------------------------------------------------------
+-- Ore Elephantification                                                      --
+--------------------------------------------------------------------------------
 
 --- A table of the ores registered with Elephant Veins to be elephantized.
 ---

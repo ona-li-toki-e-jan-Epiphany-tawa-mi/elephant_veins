@@ -15,8 +15,6 @@
 -- You should have received a copy of the GNU Lesser General Public License
 -- along with elephant_veins. If not, see <https://www.gnu.org/licenses/>.
 
-
-
 -- Private namespace for internal functions.
 local _elephant_veins = {}
 
@@ -45,15 +43,14 @@ function _elephant_veins.is_mod_enabled(name)
    return nil ~= core.get_modpath(name)
 end
 
-
-
 _elephant_veins.load_module("src/api.lua")
 _elephant_veins.load_module("src/debug.lua")
 _elephant_veins.load_module("src/elephantify.lua")
 
+--------------------------------------------------------------------------------
+-- Minetest Game                                                              --
+--------------------------------------------------------------------------------
 
-
--- Minetest Game support.
 if _elephant_veins.is_mod_enabled("default") then
    _elephant_veins.log("info", "registering ores for mod 'default'")
    elephant_veins.register_ore({
@@ -93,7 +90,10 @@ if _elephant_veins.is_mod_enabled("default") then
    })
 end
 
--- Mineclonia support.
+--------------------------------------------------------------------------------
+-- Mineclonia                                                                 --
+--------------------------------------------------------------------------------
+
 if _elephant_veins.is_mod_enabled("mcl_core") then
    _elephant_veins.log("info", "registering ores for mod 'mcl_core'")
    elephant_veins.register_ore({
@@ -167,6 +167,7 @@ if _elephant_veins.is_mod_enabled("mcl_core") then
          }
    })
 end
+
 if _elephant_veins.is_mod_enabled("mcl_copper") then
    _elephant_veins.log("info", "registering ores for mod 'mcl_copper'")
    elephant_veins.register_ore({
@@ -180,6 +181,7 @@ if _elephant_veins.is_mod_enabled("mcl_copper") then
          }
    })
 end
+
 if _elephant_veins.is_mod_enabled("mcl_deepslate") then
    _elephant_veins.log("info", "registering ores for mod 'mcl_deepslate'")
    elephant_veins.register_ore({
@@ -247,6 +249,7 @@ if _elephant_veins.is_mod_enabled("mcl_deepslate") then
          }
    })
 end
+
 if _elephant_veins.is_mod_enabled("mcl_nether") then
    _elephant_veins.log("info", "registering ores for mod 'mcl_nether'")
    elephant_veins.register_ore({
@@ -266,6 +269,7 @@ if _elephant_veins.is_mod_enabled("mcl_nether") then
           }
     })
 end
+
 if _elephant_veins.is_mod_enabled("mcl_blackstone") then
    _elephant_veins.log("info", "registering ores for mod 'mcl_blackstone'")
    elephant_veins.register_ore({

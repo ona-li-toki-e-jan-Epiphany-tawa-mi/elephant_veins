@@ -20,8 +20,6 @@
 -- Imports private namespace.
 local _elephant_veins = ...
 
-
-
 local vein_scarcity_multipler = elephant_veins.get_setting(
    "vein_scarcity_multipler", 300)
 local vein_ore_count_multipler = elephant_veins.get_setting(

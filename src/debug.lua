@@ -20,8 +20,6 @@
 -- Imports private namespace.
 _elephant_veins = ...
 
-
-
 local do_ore_dump = elephant_veins.get_setting("do_ore_dump_logging", false)
 
 --- Logs a dump of all registered ores.
