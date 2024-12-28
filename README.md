@@ -31,7 +31,7 @@ You can install it from ContentDB
 [https://content.luanti.org/packages/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins](https://content.luanti.org/packages/ona-li-toki-e-jan-Epiphany-tawa-mi/elephant_veins).
 
 Or, you can place this directory, or symlink it, into the mods folder in your
-Minetest directory.
+Luanti directory.
 
 ## How to test
 
