@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- Added in check for game ID with built in ores.
+- Made VoxeLibre explicitly incompatible.
+
 ## 0.1.1
 
 - Switched from `minetest` namespace to `core`.
