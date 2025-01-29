@@ -9,14 +9,16 @@ ore veins.
 The size, density, and frequency of ore veins are configurable in the settings
 menu.
 
-Currently compatible with the following games:
+*Note: game compatibility does not affect mods using the API.*
+
+Compatible with the following games:
 
 - Minetest Game - [https://content.luanti.org/packages/Minetest/minetest_game](https://content.luanti.org/packages/Minetest/minetest_game)
 - Mineclonia - [https://content.luanti.org/packages/ryvnf/mineclonia](https://content.luanti.org/packages/ryvnf/mineclonia)
 
-It should theoretically work with VoxeLibre
-[https://content.luanti.org/packages/Wuzzy/mineclone2](https://content.luanti.org/packages/Wuzzy/mineclone2)
-too, but it only seems to generate iron and copper in the overworld.
+Incompatible with the following games:
+
+- VoxeLibre - [https://content.luanti.org/packages/Wuzzy/mineclone2](https://content.luanti.org/packages/Wuzzy/mineclone2)
 
 When playing with Mineclonia, I recommend using the following settings instead
 of the defaults:
