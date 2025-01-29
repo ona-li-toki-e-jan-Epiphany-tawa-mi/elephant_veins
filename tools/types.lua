@@ -1,6 +1,6 @@
 -- This file is part of elephant_veins.
 --
--- Copyright (c) 2024 ona-li-toki-e-jan-Epiphany-tawa-mi
+-- Copyright (c) 2024-2025 ona-li-toki-e-jan-Epiphany-tawa-mi
 --
 -- elephant_veins is free software: you can redistribute it and/or modify it
 -- under the terms of the GNU Lesser General Public License as published by the
@@ -38,6 +38,9 @@
 ---     get: (fun(self: Settings, key: string, default?: any): any|nil),
 ---     get_bool: (fun(self: Settings, key: string, default?: boolean): boolean|nil),
 --- }
+--- @alias GameInfo {
+---     id: string,
+--- }
 --- @type {
 ---     registered_ores: table<string, Ore>,
 ---     settings: Settings,
@@ -46,6 +49,7 @@
 ---     register_on_mods_loaded: fun(callback: fun()),
 ---     register_ore: fun(ore: Ore),
 ---     clear_registered_ores: fun(),
+---     get_game_info: (fun(): GameInfo),
 --- }
 core = {}
 
